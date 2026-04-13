@@ -1,0 +1,10 @@
+services:
+  - type: worker
+    name: zoom-telegram-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    disk:
+      name: bot-data
+      mountPath: /data
+      sizeGB: 1
