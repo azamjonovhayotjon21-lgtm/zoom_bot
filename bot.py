@@ -13,7 +13,7 @@ from telegram.ext import (
 )
 
 from zoom_api import create_zoom_meeting
-from config import TELEGRAM_TOKEN, ADMIN_TELEGRAM_ID, DATA_FILE, PROXY_URL
+from config import TELEGRAM_TOKEN, ADMIN_TELEGRAM_ID, DATA_FILE
 
 TASHKENT = ZoneInfo("Asia/Tashkent")
 
@@ -379,10 +379,7 @@ async def show_list(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ─────────────────────────────────────────────
 
 def main():
-    builder = ApplicationBuilder().token(TELEGRAM_TOKEN)
-    if PROXY_URL:
-        builder = builder.proxy(PROXY_URL).get_updates_proxy(PROXY_URL)
-    app = builder.build()
+    app = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
 
     conv = ConversationHandler(
         entry_points=[
