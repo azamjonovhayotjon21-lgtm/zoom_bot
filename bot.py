@@ -272,7 +272,10 @@ async def zoom_time_receive(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 out += f"🔑 Parol: {password}\n"
             out += "\n☁️ Meeting avtomatik yozib olinadi"
             await msg.delete()
-        await update.message.reply_text(out)
+       try:
+    await update.message.reply_text(out)
+except Exception as e:
+    print(e)
         except Exception as e:
             logger.error(f"Zoom API xatosi: {e}")
             await msg.delete()
